@@ -1,0 +1,10 @@
+  Above website created by using the express, dotenv,morgan,chalk
+
+  Express,dotenv,morgan,chalk are dependencies so we need to install those dependencies while we perform the operations
+
+  to intall these dependencies follo the below step
+   CMD..> npm init -y   ("it is package.json, in this you need to inert type=module,  start=nodemon jsfilename  ex:- nodemon server.js)
+   CMD..> npm i express dotenv morgan chalk 
+
+morgan..> is for to get the web details like created time, date, and some commands are there which displays the url information 
+chalk..> is for to get the colors for the URL like red, yellow, blue etc

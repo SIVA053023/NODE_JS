@@ -1,0 +1,17 @@
+ 3rd party =>     
+ doteenv
+ node modules
+ express js
+ bcrypt
+ jsonwebtoken
+ chalk
+ morgon
+ cores
+ mysql
+ mangodb
+
+ CORE modules=>
+ fs
+ os
+ path
+ http

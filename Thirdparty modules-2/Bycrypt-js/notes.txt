@@ -1,0 +1,2 @@
+what is bycrypt...?
+by this we converted the user sensitive data to unreadable format or hashcode format, before the user data goes to the database

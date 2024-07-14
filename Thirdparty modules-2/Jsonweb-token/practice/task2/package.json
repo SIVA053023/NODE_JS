@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "name": "task2",
+  "version": "1.0.0",
+  "main": "One.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon One.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

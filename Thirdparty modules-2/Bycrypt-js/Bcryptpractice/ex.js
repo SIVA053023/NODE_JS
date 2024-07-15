@@ -12,7 +12,7 @@ user={...user,cc:new_cc}
 console.log(user)
 let flag=bcrypt.compareSync("1234567895641891",user.cc)
 if(flag){
-    console.log("login successfully")
+    console.log("Login successfully")
 }
 else{
     console.log("Login failed")

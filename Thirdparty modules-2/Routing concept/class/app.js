@@ -1,11 +1,11 @@
 import express from 'express';
-import morgan from 'morgan';
+//import morgan from 'morgan';
 import userRouter from './Routing/userRouter.js';
 import prodrouter from './Routing/productRouter.js';
 let app = express();
 
 app.use("/user",userRouter)
-app.use("/product",)
+app.use("/product",prodrouter)
 
 app.listen(8080,'127.0.0.1',(err)=>{
     if(err) throw err

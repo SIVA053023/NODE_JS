@@ -1,0 +1,17 @@
+{
+  "name": "bcryptpractice",
+  "version": "1.0.0",
+  "main": "One.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon One.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  }
+}

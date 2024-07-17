@@ -35,14 +35,14 @@ router.put('/update/:id',async(req,resp)=>{
            emp.eid==emp_id;
     })
     if(!flag){
-        return resp.status(200).json({"err":"user does't exist"})
+        return resp.status(200).json({"err":"user Already exist"})
     }
     // employees.push(eid) it does't work to get thr remainitg elements in a json file
     let remaining_emp=employees.filter((emp)=>{
              return emp.eid!=eid
     })
     saveEmployees(remaining_emp)
-    return resp.status.json({"msg":"successfully deleted"})
+    return resp.status.json({"msg":"successfully updated"})
 })
 
 

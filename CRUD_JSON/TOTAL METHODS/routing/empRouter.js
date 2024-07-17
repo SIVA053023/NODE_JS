@@ -10,35 +10,62 @@ router.get('/read',async(req,resp)=>{
      resp.status(200).json(employees)
 })
 
-// router.post('/create',async (req,resp)=>{
-//     let emp_id=req.body
-//     let employees=await get_employees();
-//     let flag=employees.find((emp)=>{
-//         return emp.id===emp_id.id
-//     })
-//     if(flag){
-//         return resp.json({"Err":"Employee Already exist"})
-//     }
-//     employees.push(emp_id)
-//     await SaveEmployees(employees);
-//     return resp.status(101).json({"msg":"employee created successfully"})
-// })
+
 router.post("/create",async(req,resp)=>{
     let emp_Data=req.body;
     console.log(emp_Data);
     let employees=await get_employees();
 
     let flag =employees.find((emp)=>{
-        return emp.eid === emp_Data.eid
+        return emp.id === emp_Data.id
     })
     console.log("Flag Value....",flag)
     if(flag){
         return resp.json({"Error":"Employee Alread exist!"})
     }
     employees.push(emp_Data)
-    await SaveEmployees(employees);
+     SaveEmployees(employees);
     return resp.status(200).json({"msg":"new Employee Object created successfully!"})
 })
+
+router.delete("/delete/:id",async (req,resp)=>{
+    let emp_Id=req.params.id;
+    let employees= await get_employees()
+   // console.log(emp_Id)
+    let flag=employees.find((emp)=>{
+        return emp.id == emp_Id;
+    })
+   // console.log(flag)
+    if(!flag){
+        return resp.status(401).json({"msg":"Employee Not Exist!"})
+    }
+    let remaining_Employees=employees.filter((emp)=>{
+           return emp.id !=emp_Id;
+    })
+    SaveEmployees(remaining_Employees)
+    return resp.status(200).json({"msg":"deleted successfully"})
+
+
+})
+
+router.put('/update/:id',async (req,resp)=>{
+          let emp_data=req.params.id
+          let emp_obj=req.body
+          let employees=await get_employees();
+          let flag=employees.find((emp)=>{
+            return emp.id==emp_data
+          })
+          if(!flag){
+            return resp.status(899).json({"Err":"employee not exist"})
+          }
+          let remaining_emp=employees.filter((emp)=>{
+            return emp.id != emp_data
+          })
+          remaining_emp.unshift(emp_obj)
+          SaveEmployees(remaining_emp)
+         return  resp.status(560).json({"msg":"Employee updated successfully"})
+})
+
 
 
 

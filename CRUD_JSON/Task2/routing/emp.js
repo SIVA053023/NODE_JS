@@ -45,21 +45,40 @@ router.delete('/delete/:id',async(req,resp)=>{
     
 })
 
-router.put('/update/:id',async(req,resp)=>{
-    let emp_id=req.params.id
+
+
+// router.put('/update/:id',async(req,resp)=>{
+//     let emp_id=req.params.id
+//     let emp_obj=req.body
+//     let employees=await get_employees();
+//     let flag=employees.find((emp)=>{
+//         return emp.id==emp_id
+//     })
+//     if(!flag){
+//         return resp.status(600).json({"Err":"Employee not found"})
+//     }
+//     let remaining_emp=employees.filter((emp)=>{
+//         return emp.id != emp_id
+//     })
+//     remaining_emp.unshift(emp_obj)
+//     saveEmployees(remaining_emp)
+// })
+router.put('/update/:id',async (req,resp)=>{
+    let emp_data=req.params.id
     let emp_obj=req.body
     let employees=await get_employees();
     let flag=employees.find((emp)=>{
-        return emp.id==emp_id
+      return emp.id==emp_data
     })
     if(!flag){
-        return resp.status(600).json({"Err":"Employee not found"})
+      return resp.status(899).json({"Err":"employee not exist"})
     }
     let remaining_emp=employees.filter((emp)=>{
-        return emp.id != emp_obj
+      return emp.id != emp_data
     })
-    employees.unshift(emp_obj)
-    saveEmployees(employees)
+    remaining_emp.unshift(emp_obj)
+    saveEmployees(remaining_emp)
+   return  resp.status(560).json({"msg":"Employee updated successfully"})
 })
 
 let saveEmployees=(employees)=>{

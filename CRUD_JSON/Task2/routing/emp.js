@@ -28,8 +28,38 @@ resp.status(896).json({"msg":"Employee created Successfully"})
 })
 
 // deleting the employee
-router.delete('/delete/:id',(req,resp)=>{
+router.delete('/delete/:id',async(req,resp)=>{
     let emp_id=req.params.id
+    let employees=await get_employees();
+    let flag=employees.find((emp)=>{
+        return emp.id==emp_id
+    })
+    if(!flag){
+        return resp.status(300).json({"Err":"Employees not exist"})
+    }
+    let remaining_emp=employees.filter((emp)=>{
+        return  emp.id   !=emp_id 
+    })
+    saveEmployees(remaining_emp)
+   return resp.status(200).json({"msg":"deleted successfully"})
+    
+})
+
+router.put('/update/:id',async(req,resp)=>{
+    let emp_id=req.params.id
+    let emp_obj=req.body
+    let employees=await get_employees();
+    let flag=employees.find((emp)=>{
+        return emp.id==emp_id
+    })
+    if(!flag){
+        return resp.status(600).json({"Err":"Employee not found"})
+    }
+    let remaining_emp=employees.filter((emp)=>{
+        return emp.id != emp_obj
+    })
+    employees.unshift(emp_obj)
+    saveEmployees(employees)
 })
 
 let saveEmployees=(employees)=>{

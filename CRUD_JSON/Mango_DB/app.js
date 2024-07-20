@@ -1,23 +1,42 @@
 import express from 'express'
-import dotenv from 'dotenv'
 import morgan from 'morgan'
-// import mangodb from 'mangodb'
+import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import empRouter from './routing/empRouter.js'
-import Employee from '../model/employee.js'
+//create express app
+let app = express()
 
-let app=express()
+
+//how to read form data
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 app.use(morgan('dev'))
-dotenv.config({path:'./Config/dev.env'})
 
-let port=process.env.port
-let hostname=process.env.HOST_NAME
-let dburl=process.env.MANGO_local_url
+app.use("/emp",empRouter);
+
+app.get("/",(req,resp)=>{
+
+    resp.status(200).json({"msg":"Root Request"})
+})
+dotenv.config({path:'./config/dev.env'})
+let port=process.env.PORT 
+let host=process.env.HOST_NAME
+//let dburl=process.env.MONGO_LOCAL_URL
+
+//connecting mongodb using moongoose
+// connect to Mongo DB Database
+mongoose.connect(process.env.MONGO_LOCAL_URL, {
+    useUnifiedTopology : true,
+    useNewUrlParser : true,
+}).then((response) => {
+    console.log(`Connected to Mongo DB Successfully...........`);
+}).catch((err) => {
+    console.error(err);
+    process.exit(1); // stop the node js process if unable to connect to mongodb
+});
 
 
-
-
-
-mongoose.connect(dburl,{})
-app.listen(port,hostname)
+app.listen(port,host,(err)=>{
+    console.log(`Server Running! http://${host}:${port}/`)
+})

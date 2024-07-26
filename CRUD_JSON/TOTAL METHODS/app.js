@@ -6,7 +6,7 @@ import router from './routing/empRouter.js'
 
 let app=express()
 app.use(express.json())
-app.use(morgan('dev'))
+app.use(morgan())
 
 dotenv.config({path:'./Config/dev.env'})
 
@@ -20,6 +20,6 @@ app.use('/emp',router)
 
 app.listen(port,hostname,(err)=>{
     if(err) throw err
-    console.log(chalk.bgBlue(`server running successfully http://${hostname}:${port}/`))
+    console.log(chalk.magenta(`server running successfully http://${hostname}:${port}/`))
 })
 

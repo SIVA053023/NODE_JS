@@ -8,7 +8,7 @@ import cors from 'cors'
 
 let app=express()
 app.use(morgan('dev'));
-//app.use(cors())  /// for to integrate with front end
+app.use(cors())  /// for to integrate with front end
 app.use(express.json())
 app.use(urlencoded({extended:true}))
 app.use('/prod',ProdRouter)
@@ -21,8 +21,8 @@ app.get('/',(req,resp)=>{
 })
 
 mongoose.connect(process.env.mongo_url,{
-     usefiedTopology:true,
-     useNewUrlParser:true
+    //  usefiedTopology:true,
+    //  useNewUrlParser:true
 }).then(()=>{
     console.log("server running successfully")
 }).catch((err)=>{

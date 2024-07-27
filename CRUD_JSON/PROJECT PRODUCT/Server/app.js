@@ -3,10 +3,12 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'   // http logger or for getting information that user wants to request
 import chalk from 'chalk'
 import mongoose from 'mongoose'
+import cors from 'cors'
  import ProdRouter from './routing/ProductRouter.js'
 
 let app=express()
 app.use(morgan('dev'));
+//app.use(cors())  /// for to integrate with front end
 app.use(express.json())
 app.use(urlencoded({extended:true}))
 app.use('/prod',ProdRouter)
@@ -19,8 +21,8 @@ app.get('/',(req,resp)=>{
 })
 
 mongoose.connect(process.env.mongo_url,{
-    // usefiedTopology:true,
-    // useNewUrlParser:true
+     usefiedTopology:true,
+     useNewUrlParser:true
 }).then(()=>{
     console.log("server running successfully")
 }).catch((err)=>{
@@ -29,5 +31,6 @@ mongoose.connect(process.env.mongo_url,{
 })
 
 app.listen(port,hostname,(err)=>{
-    console.log(`server running http://${hostname}:${port}/`)
+    console.log(chalk.green(`server running http://${hostname}:${port}/`))
 })
+

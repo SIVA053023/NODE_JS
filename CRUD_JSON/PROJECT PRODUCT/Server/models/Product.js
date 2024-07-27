@@ -12,3 +12,4 @@ let product_schema=mongoose.Schema({
 let Product=mongoose.model("Prod",product_schema)
 
 export default Product
+

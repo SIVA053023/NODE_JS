@@ -29,7 +29,7 @@ router.post('/create',async(req,resp)=>{
         employees=new model(emp_data)
         console.log(employees)
         await employees.save()
-        return resp.status(200).json(employees)
+        return resp.status(200).json({"msg":"employee created successfully"})
     }
     catch{
         return resp.status(300).json({"err":err.message})

@@ -26,6 +26,6 @@ mongoose.connect(dburl)
 })
 
 app.listen(port,hostname,()=>{
-    console.log(`server running http://${hostname}:${port}/`)
+    console.log(chalk.bgBlue(`server running http://${hostname}:${port}/`))
 })
 

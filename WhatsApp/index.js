@@ -15,7 +15,7 @@ import wbm from 'wbm';
         const phones = ['+919515283518']; // Ensure the phone number format is correct
         const message = "hello good morning";
         
-        await wbm.send(phones, message);
+        await wbm.send(phones, message)
         
         await wbm.end();
     } catch (err) {

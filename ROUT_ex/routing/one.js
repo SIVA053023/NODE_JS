@@ -6,5 +6,5 @@ import dotenv from 'dotenv'
 let app=express();
 let router= express.Router();
 router.get("./",(req,resp)=>{
-    let data= fs.read
+    let data= fs.read  // ok
 })

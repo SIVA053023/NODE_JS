@@ -6,7 +6,7 @@ let router=express.Router();
 //Method:GET
 router.get("/",(req,resp)=>{
 
-    resp.status(200).json({"msg":"Employee Root Request"})
+    resp.status(200).json({"msg":"Employee Root Request"})  //ok
 })
 
 //URL:localhost:8080/emp/read

@@ -3,7 +3,7 @@ import emp from './data.js'
 
 
 let app= express();
-// API URL: http://localhost:8080/
+// API URL: http://localhost:8080/                            This is a API
 app.get("/" ,(req,resp)=>{
     console.log(emp)
     resp.send("hello good morning")
